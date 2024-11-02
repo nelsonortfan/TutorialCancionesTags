@@ -15,6 +15,8 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Setup Python
         uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
       - name: Verificar version de Python
         run: |
           python --version
