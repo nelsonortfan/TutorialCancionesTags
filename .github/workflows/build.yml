@@ -27,22 +27,11 @@ jobs:
         run: | 
           pwd
           ls                    
-          coverage run -m unittest tests/test_album.py tests/test_cancion.py tests/test_interprete.py
+          python -m coverage run -m unittest discover -s tests -v
           echo 'Miramos el reporte'
           coverage report
           echo 'Guardamos archivo'
-          coverage xml
-          echo 'sin crear carpeta'
-          ls
-          mkdir coverage-reports
-          cp coverage.xml coverage-reports
-          echo 'con carpeta creada'
-          ls
-          cd coverage-reports
-          echo 'Miramos dentro del folder'
-          ls
-          echo 'Miramos dentro del archivo'
-          cat coverage.xml
+          python -m coverage xml -i          
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
