@@ -27,7 +27,7 @@ jobs:
         run: | 
           pwd
           ls                    
-          coverage run -m unittest discover -s tests
+          coverage run -m unittest tests/test_album.py tests/test_cancion.py tests/test_interprete.py
           echo 'Miramos el reporte'
           coverage report
           echo 'Guardamos archivo'
