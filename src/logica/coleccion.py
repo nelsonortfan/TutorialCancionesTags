@@ -86,6 +86,7 @@ class Coleccion():
                     nuevaCancion.interpretes = interpretesCancion
                     session.add(nuevaCancion)
                     session.commit()
+                    print("linea de prueba")
                     return True
                 else:
                     return False
