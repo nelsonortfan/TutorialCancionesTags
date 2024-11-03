@@ -214,17 +214,19 @@ Licensed under the MIT license.
 
 								var positions = styleCache[key].positions;
 
-								for (var i = 0, position; position = positions[i]; i++) {
+								var i = 0; // Initialize i outside the loop
+								while (i < positions.length) {
+									var position = positions[i];
+
 									if (position.active) {
 										if (!position.rendered) {
 											layer.append(position.element);
 											position.rendered = true;
 										}
+										i++; // Increment i only when the position is active
 									} else {
-										positions.splice(i--, 1);
-										if (position.rendered) {
-											position.element.detach();
-										}
+										positions.splice(i, 1); // Remove the inactive position
+										// No need to increment i here, as splice shifts the elements
 									}
 								}
 
