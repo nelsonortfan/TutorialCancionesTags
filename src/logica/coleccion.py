@@ -203,7 +203,7 @@ class Coleccion():
             session.delete(interprete)
             session.commit()
             return True
-        except:
+        except Exception as e:
             return False
 
     def dar_interpretes(self):
