@@ -2,6 +2,7 @@ from src.modelo.album import Album, Medio
 from src.modelo.cancion import Cancion
 from src.modelo.declarative_base import engine, Base, session
 from src.modelo.interprete import Interprete
+from sqlalchemy.exc import SQLAlchemyError
 
 
 class Coleccion():
@@ -41,7 +42,10 @@ class Coleccion():
             session.delete(album)
             session.commit()
             return True
-        except:
+        except SQLAlchemyError as e:
+            session.rollback()  # Roll back the session in case of error
+            # Optionally, log the exception or handle it further
+            print(f"Error occurred while deleting canción: {e}")  # Replace with appropriate logging
             return False
 
     def dar_albumes(self):
@@ -133,7 +137,10 @@ class Coleccion():
                 return True
             else:
                 return False
-        except:
+        except SQLAlchemyError as e:
+            session.rollback()  # Roll back the session in case of error
+            # Optionally, log the exception or handle it further
+            print(f"Error occurred while deleting canción: {e}")  # Replace with appropriate logging
             return False
 
     def dar_canciones(self):
@@ -205,7 +212,10 @@ class Coleccion():
             session.delete(interprete)
             session.commit()
             return True
-        except Exception:
+        except SQLAlchemyError as e:
+            session.rollback()  # Roll back the session in case of error
+            # Optionally, log the exception or handle it further
+            print(f"Error occurred while deleting canción: {e}")  # Replace with appropriate logging
             return False
 
     def dar_interpretes(self):
