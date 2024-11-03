@@ -74,15 +74,15 @@ class Coleccion():
         def create_cancion(album=None):
             nuevaCancion = Cancion(titulo=titulo, minutos=minutos, segundos=segundos, compositor=compositor,
                                    albumes=[album] if album else [])
-            interpretesCancion = []  # Initialize interpretesCancion list
+            interpretes = []  # Initialize interpretesCancion list
 
             for item in interpretes:
                 interprete = Interprete(nombre=item["nombre"], texto_curiosidades=item["texto_curiosidades"],
                                         cancion=nuevaCancion.id)
                 session.add(interprete)
-                interpretesCancion.append(interprete)
+                interpretes.append(interprete)
 
-            nuevaCancion.interpretes = interpretesCancion
+            nuevaCancion.interpretes = interpretes
             session.add(nuevaCancion)
             session.commit()
             return True
