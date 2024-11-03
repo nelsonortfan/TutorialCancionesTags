@@ -11,6 +11,8 @@ class App(QApplication):
     Clase principal de la interfaz
     '''
 
+    MENSAJE_ERROR = "Error al buscar álbum"
+
     def __init__(self, sys_argv, logica):
         '''
         Constructor de la interfaz
@@ -190,7 +192,7 @@ class App(QApplication):
         if len(albumes) == 0:
             mensaje_error = QMessageBox()
             mensaje_error.setIcon(QMessageBox.Critical)
-            mensaje_error.setWindowTitle("Error al buscar álbum")
+            mensaje_error.setWindowTitle(self.MENSAJE_ERROR)
             mensaje_error.setText("No hay álbumes con el título " + nombre_album)
             mensaje_error.setStandardButtons(QMessageBox.Ok)
             mensaje_error.exec_()
@@ -204,7 +206,7 @@ class App(QApplication):
         if len(canciones) == 0:
             mensaje_error = QMessageBox()
             mensaje_error.setIcon(QMessageBox.Critical)
-            mensaje_error.setWindowTitle("Error al buscar álbum")
+            mensaje_error.setWindowTitle(self.MENSAJE_ERROR)
             mensaje_error.setText("No hay canciones con el título " + nombre_cancion)
             mensaje_error.setStandardButtons(QMessageBox.Ok)
             mensaje_error.exec_()
@@ -218,7 +220,7 @@ class App(QApplication):
         if len(interpretes) == 0:
             mensaje_error = QMessageBox()
             mensaje_error.setIcon(QMessageBox.Critical)
-            mensaje_error.setWindowTitle("Error al buscar álbum")
+            mensaje_error.setWindowTitle(self.MENSAJE_ERROR)
             mensaje_error.setText("No hay canciones con el interprete " + nombre_interprete)
             mensaje_error.setStandardButtons(QMessageBox.Ok)
             mensaje_error.exec_()
